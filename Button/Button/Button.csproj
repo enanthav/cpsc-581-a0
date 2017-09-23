@@ -99,5 +99,14 @@
   <ItemGroup>
     <Resource Include="assets\Carlos button.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\drive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="car.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Carlos button original.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
