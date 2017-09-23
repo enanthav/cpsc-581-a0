@@ -45,8 +45,8 @@ namespace Button
 
             Debug.WriteLine("Please stop bothering me");
             btnCarlos.Margin = new Thickness(
-                mousePos.X - (btnCarlos.Width / 2),
-                mousePos.Y - (btnCarlos.Height / 2), 0, 0);
+                mousePos.X - (btnCarlos.ActualWidth / 2),
+                mousePos.Y - (btnCarlos.ActualHeight / 2), 0, 0);
 
         }
 
