@@ -34,18 +34,12 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource Excited}"/>
-            <BeginStoryboard Storyboard="{StaticResource DriveInitialD}"/>
-        </EventTrigger>
-    </Window.Triggers>
 
     <Window.Background>
         <ImageBrush ImageSource="assets/Japan.png"></ImageBrush>
     </Window.Background>
     <Grid>
-        <Image x:Name="btnCarlos" HorizontalAlignment="Left" Width="70" Height="120" Source="assets/Carlos button.png" MouseMove="btnCarlos_MouseMove" RenderTransformOrigin="0.5,0.5" Margin="800,536,0,274" MouseDown="btnCarlos_MouseDown" MouseUp="btnCarlos_MouseUp">
+        <Image x:Name="btnCarlos" HorizontalAlignment="Left" Height="210" Width="110" Source="assets/Carlos button.png" MouseMove="btnCarlos_MouseMove" MouseDown="btnCarlos_MouseDown" MouseUp="btnCarlos_MouseUp"  RenderTransformOrigin="0.5,0.5" Margin="882,797,0,-77">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

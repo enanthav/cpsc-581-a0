@@ -44,17 +44,43 @@ namespace Button
             Point mousePos = e.GetPosition(this);
 
             Debug.WriteLine("Please stop bothering me");
+
             btnCarlos.Margin = new Thickness(
-                mousePos.X - (btnCarlos.ActualWidth / 2),
-                mousePos.Y - (btnCarlos.ActualHeight / 2), 0, 0);
-
+                mousePos.X - (btnCarlos.Width / 2),
+                mousePos.Y - (btnCarlos.Height / 2), 0, 0);
         }
-
+        
         private void btnCarlos_MouseDown(object sender, MouseButtonEventArgs e)
         {
             pressed = true;
-            btnCarlos.Source = new BitmapImage(new Uri(@"/assets/drive.png", UriKind.Relative));
+            Point mousePos = e.GetPosition(this);
+
+            // check x, y coordinates to see if they match the x, y coordinates of the elements on the map
+            if (((mousePos.X >= 390) & (mousePos.X <= 390 + btnCarlos.Width)) & ((mousePos.Y >= 620) & (mousePos.Y <= 625 + btnCarlos.Height)))
+            {
+                // Check to see if Carlos is in mountainous area - Mount Haruna
+                btnCarlos.Source = new BitmapImage(new Uri(@"/assets/drive.png", UriKind.Relative));
+                Storyboard driveSB = this.FindResource("DriveInitialD") as Storyboard;
+                driveSB.Begin();
+                Debug.WriteLine("Vroom vroom");
+            } else if (((mousePos.X >= 270) & (mousePos.X <= 270 + btnCarlos.Width)) & ((mousePos.Y >= 660) & (mousePos.Y <= 660 + btnCarlos.Height)))
+            {
+                // curry
+                btnCarlos.Source = new BitmapImage(new Uri(@"/assets/Carlos eating button.png", UriKind.Relative));
+                Debug.WriteLine("Curry");
+            } else if (((mousePos.X >= 495) & (mousePos.X <= 495 + btnCarlos.Width)) & ((mousePos.Y >= 485) & (mousePos.Y <= 485 + btnCarlos.Height)))
+            {
+                // 7-Eleven
+                btnCarlos.Source = new BitmapImage(new Uri(@"/assets/Carlos heart eyes.png", UriKind.Relative));
+                Debug.WriteLine("7-11");
+            } else if (((mousePos.X >= 180) & (mousePos.X <= 180 + btnCarlos.Width)) & ((mousePos.Y >= 490) & (mousePos.Y <= 490 + btnCarlos.Height)))
+            {
+                // Vending machine
+                btnCarlos.Source = new BitmapImage(new Uri(@"/assets/Carlos holding coffee.png", UriKind.Relative));
+                Debug.WriteLine("Vending machine");
+            }
         }
+
 
         private void btnCarlos_MouseUp(object sender, MouseButtonEventArgs e)
         {
