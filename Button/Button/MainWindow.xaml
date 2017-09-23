@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Button"
         mc:Ignorable="d"
-        Title="MainWindow" Height="444.331" Width="557.275">
+        Title="MainWindow" Height="960.657" Width="1009.846">
+
+    <Window.Background>
+        <ImageBrush ImageSource="assets/Japan.png"></ImageBrush>
+    </Window.Background>
     <Grid>
-        <Image x:Name="btnJapan" HorizontalAlignment="Left" Height="413" VerticalAlignment="Top" Width="583" Source="assets/Japan.png" RenderTransformOrigin="0.5,0.5" Margin="0,0,-34,0">
-        </Image>
+        <Image x:Name="btnJapan" HorizontalAlignment="Left" Width="70" Source="assets/Carlos button.png" RenderTransformOrigin="0.5,0.5" Margin="804,588,0,222"/>
     </Grid>
 </Window>

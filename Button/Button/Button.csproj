@@ -97,7 +97,7 @@
     <Resource Include="assets\Japan.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="JP-EPS-02-0001.png" />
+    <Resource Include="assets\Carlos button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
