@@ -9,14 +9,18 @@
     <Window.Resources>
         <Storyboard x:Key="Excited">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="btnCarlos">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-796.594"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-96.856"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="-796.594"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="6.383"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="8.511"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="8.511"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="21.276"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="btnCarlos">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-45.463"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-440.795"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="-577.185"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-255.309"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="-78.721"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="-438.281"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-74.466"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="-408.495"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="-76.594"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="DriveInitialD">
@@ -24,16 +28,46 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="-381.495"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="414.358"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-956.703"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-391.378"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-476.481"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="btnCarlos">
                 <EasingDoubleKeyFrame KeyTime="0" Value="41.509"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="67.453"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="43.486"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="35.579"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-192.071"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Anticipation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="btnCarlos">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-234.033"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-229.778"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-231.906">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="btnCarlos">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-170.206"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-395.729"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-329.774">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-268.074"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-336.156"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-270.201"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-291.477"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="-274.456"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Anticipation}"/>
+        </EventTrigger>
+    </Window.Triggers>
 
     <Window.Background>
         <ImageBrush ImageSource="assets/Japan.png"></ImageBrush>
