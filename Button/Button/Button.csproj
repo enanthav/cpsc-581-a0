@@ -127,6 +127,7 @@
     <Content Include="assets\beat of rising sun.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="assets\cockatiel.png" />
     <Content Include="assets\driving.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

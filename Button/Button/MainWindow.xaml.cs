@@ -27,6 +27,7 @@ namespace Button
         private Random r = new Random();
         private DispatcherTimer sleepTimer = new DispatcherTimer();
         private bool pressed = false;
+        private bool tokyoBackground = false;
         private SoundPlayer drivingSound = new SoundPlayer("assets\\driving.wav");
         private SoundPlayer risingSun = new SoundPlayer("assets\\beat of rising sun.wav");
         public MainWindow()
@@ -38,7 +39,7 @@ namespace Button
 
             // Setup sleep animation timer
             sleepTimer.Tick += Timer_Tick;
-            sleepTimer.Interval = System.TimeSpan.FromMilliseconds(3000);
+            sleepTimer.Interval = System.TimeSpan.FromMilliseconds(4000);
         }
 
         private void btnCarlos_MouseMove(object sender, MouseEventArgs e)
@@ -85,10 +86,16 @@ namespace Button
                 mousePos.X - (btnCarlos.Width / 2),
                 mousePos.Y - (btnCarlos.Height / 2), 0, 0);
         }
-        
+        // Event handler for mouse click
         private void btnCarlos_MouseDown(object sender, MouseButtonEventArgs e)
         {
             pressed = true;
+            // Determine if Tokyo background is set
+            if (tokyoBackground)
+            {
+                this.Background = new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Button;component/assets/Japan.png")));
+                btnCarlos.Source = new BitmapImage(new Uri(@"/assets/Carlos button.png", UriKind.Relative));
+            }
             risingSun.Stop();
             sleepTimer.Stop();
             Point mousePos = e.GetPosition(this);
@@ -101,6 +108,7 @@ namespace Button
                 drivingSound.Play();
                 Storyboard driveSB = this.FindResource("DriveInitialD") as Storyboard;
                 driveSB.Begin();
+                pressed = false;
                 Debug.WriteLine("Vroom vroom");
             } else if (((mousePos.X >= 270) & (mousePos.X <= 270 + btnCarlos.Width)) & ((mousePos.Y >= 660) & (mousePos.Y <= 660 + btnCarlos.Height)))
             {
@@ -118,6 +126,7 @@ namespace Button
                 btnCarlos.Source = new BitmapImage(new Uri(@"/assets/Carlos holding coffee.png", UriKind.Relative));
                 Debug.WriteLine("Vending machine");
             }
+
         }
 
 
@@ -131,10 +140,11 @@ namespace Button
         private void Timer_Tick(object sender, EventArgs e)
         {
             // currently background will not updated and btnCarlos will not update
-            // Carlos' fondest memory is about the night sky
+            // Carlos' fondest memory is night time in Japan
             btnCarlos.Source = new BitmapImage(new Uri(@"/assets/Carlos starry eyed.png", UriKind.Relative));
-            // this.Background = new ImageBrush(new BitmapImage(new Uri(@"/assets/Tokyo night.png", UriKind.Relative)));
-
+            this.Background = new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Button;component/assets/Tokyo night.jpg")));
+            tokyoBackground = true;
+            sleepTimer.Stop();
             risingSun.Play();
             Debug.Write("Tokyo night!");
         }
