@@ -71,7 +71,7 @@
         <ImageBrush ImageSource="assets/Japan.png"></ImageBrush>
     </Window.Background>
     <Canvas>
-        <Image x:Name="btnCarlos" HorizontalAlignment="Left" Height="210" Width="110" Source="assets/Carlos button.png" MouseMove="btnCarlos_MouseMove" MouseDown="btnCarlos_MouseDown" MouseUp="btnCarlos_MouseUp"  RenderTransformOrigin="0.5,0.5" Margin="882,797,0,-77">
+        <Image x:Name="btnCarlos" HorizontalAlignment="Left" Height="210" Width="110" Source="assets/Carlos button.png" MouseRightButtonDown="btnCarlos_MouseRightButtonDown" MouseMove="btnCarlos_MouseMove"  MouseLeftButtonDown="btnCarlos_MouseLeftButtonDown" MouseUp="btnCarlos_MouseUp"  RenderTransformOrigin="0.5,0.5" Margin="882,797,0,-77">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
