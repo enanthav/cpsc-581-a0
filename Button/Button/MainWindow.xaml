@@ -25,14 +25,14 @@
         </Storyboard>
         <Storyboard x:Key="DriveInitialD">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="btnCarlos">
-                <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="-345.775">
+                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="-271.31">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <BackEase EasingMode="EaseInOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="btnCarlos">
-                <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="-237.588">
+                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="-190.781">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <BackEase EasingMode="EaseInOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
@@ -42,23 +42,26 @@
         <Storyboard x:Key="Anticipation">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="btnCarlos">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-234.033"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-229.778"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-231.906">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-231.906"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-236.161">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <ExponentialEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-225.523"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-234.033"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-236.161"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="btnCarlos">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-170.206"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-395.729"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-329.774">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-365.943"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-325.519">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <ExponentialEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-268.074"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-336.156"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-270.202"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-331.901"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-270.201"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-291.477"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="-274.456"/>

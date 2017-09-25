@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Media;
+using System.Windows.Threading;
 
 namespace Button
 {
@@ -27,8 +28,11 @@ namespace Button
         private bool pressed = false;
         private bool tokyoBackground = false;
         private bool curryEaten = false;
+        private bool anticipating = false;
         private SoundPlayer drivingSound = new SoundPlayer("assets\\driving.wav");
         private SoundPlayer risingSun = new SoundPlayer("assets\\beat of rising sun.wav");
+        // Storyboard driveSB = this.Resources["DriveInitialD"] as Storyboard;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,12 +51,27 @@ namespace Button
         private void driveSB_Completed(object sender, EventArgs e)
         {
             btnCarlos.Source = new BitmapImage(new Uri(@"/assets/Carlos button.png", UriKind.Relative));
-            btnCarlos.RenderTransform = new TranslateTransform();
+            Storyboard driveSB = this.Resources["DriveInitialD"] as Storyboard;
+            driveSB.Stop();
+            // btnCarlos.RenderTransform = new TranslateTransform();
         }
+
+        /*
+        private void EventPublisher_OnFinish(object sender, EventArgs args)
+        {
+            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate () { this.stopDriveSB(); });
+        }
+
+        private void stopDriveSB()
+        {
+            
+        }
+        */
 
         private void anticipate_Completed(object sender, EventArgs e)
         {
-            btnCarlos.RenderTransform = new TranslateTransform();
+            Storyboard anticipate = this.Resources["Anticipation"] as Storyboard;
+            anticipate.Stop();
         }
 
         private void btnCarlos_MouseMove(object sender, MouseEventArgs e)
@@ -67,35 +86,41 @@ namespace Button
             Point mousePos = e.GetPosition(this);
 
 
-            /*
+            
             Debug.WriteLine("Mouse Moving!");
             Storyboard anticipate = this.Resources["Anticipation"] as Storyboard;
-            // check x, y coordinates to see if they match the x, y coordinates of the elements on the map
-            if (((mousePos.X >= 390) & (mousePos.X <= 390 + btnCarlos.Width)) & ((mousePos.Y >= 620) & (mousePos.Y <= 625 + btnCarlos.Height)))
+            if (!anticipating)
             {
-                // Carlos is driving through Mount Haruna
-                anticipate.Begin();
-                Debug.WriteLine("Vroom vroom");
+                // check x, y coordinates to see if they match the x, y coordinates of the elements on the map
+                if (((mousePos.X >= 390) & (mousePos.X <= 390 + btnCarlos.Width)) & ((mousePos.Y >= 620) & (mousePos.Y <= 625 + btnCarlos.Height)))
+                {
+                    // Carlos is driving through Mount Haruna
+                    anticipate.Begin();
+                    anticipating = true;
+                    Debug.WriteLine("Vroom vroom");
+                }
+                else if (((mousePos.X >= 270) & (mousePos.X <= 270 + btnCarlos.Width)) & ((mousePos.Y >= 660) & (mousePos.Y <= 660 + btnCarlos.Height)))
+                {
+                    // Carlos eats curry
+                    anticipate.Begin();
+                    anticipating = true;
+                    Debug.WriteLine("Curry");
+                }
+                else if (((mousePos.X >= 495) & (mousePos.X <= 495 + btnCarlos.Width)) & ((mousePos.Y >= 485) & (mousePos.Y <= 485 + btnCarlos.Height)))
+                {
+                    // Carlos loves 7-Eleven
+                    anticipate.Begin();
+                    anticipating = true;
+                    Debug.WriteLine("7-11");
+                }
+                else if (((mousePos.X >= 180) & (mousePos.X <= 180 + btnCarlos.Width)) & ((mousePos.Y >= 490) & (mousePos.Y <= 490 + btnCarlos.Height)))
+                {
+                    // Carlo gets black sugar free coffee from the vending machine
+                    anticipate.Begin();
+                    anticipating = true;
+                    Debug.WriteLine("Vending machine");
+                }
             }
-            else if (((mousePos.X >= 270) & (mousePos.X <= 270 + btnCarlos.Width)) & ((mousePos.Y >= 660) & (mousePos.Y <= 660 + btnCarlos.Height)))
-            {
-                // Carlos eats curry
-                anticipate.Begin();
-                Debug.WriteLine("Curry");
-            }
-            else if (((mousePos.X >= 495) & (mousePos.X <= 495 + btnCarlos.Width)) & ((mousePos.Y >= 485) & (mousePos.Y <= 485 + btnCarlos.Height)))
-            {
-                // Carlos loves 7-Eleven
-                anticipate.Begin();
-                Debug.WriteLine("7-11");
-            }
-            else if (((mousePos.X >= 180) & (mousePos.X <= 180 + btnCarlos.Width)) & ((mousePos.Y >= 490) & (mousePos.Y <= 490 + btnCarlos.Height)))
-            {
-                // Carlo gets black sugar free coffee from the vending machine
-                anticipate.Begin();
-                Debug.WriteLine("Vending machine");
-            }
-            */
             btnCarlos.Margin = new Thickness(
                 mousePos.X - (btnCarlos.Width / 2),
                 mousePos.Y - (btnCarlos.Height / 2), 0, 0);
@@ -127,18 +152,8 @@ namespace Button
             {
                 // Carlos is driving through Mount Haruna
                 btnCarlos.Source = new BitmapImage(new Uri(@"/assets/drive.png", UriKind.Relative));
-
-
-
-
                 Storyboard driveSB = this.Resources["DriveInitialD"] as Storyboard;
                 driveSB.Begin();
-
-
-
-
-
-
                 drivingSound.Play();
                 pressed = false;
                 Debug.WriteLine("Vroom vroom");
@@ -168,7 +183,7 @@ namespace Button
             pressed = false;
         }
 
-        // The code below will run if the right button is clicked
+        // The code below change the background to the Tokyo skyline and play music if the right mouse button is clicked
         private void btnCarlos_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             // Carlos' fondest memory is night time in Japan
