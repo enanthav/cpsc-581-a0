@@ -130,7 +130,9 @@
     <Resource Include="assets\Japan empty curry.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="assets\cockatiel.png" />
+    <Resource Include="assets\Carlos button activated.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="assets\driving.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

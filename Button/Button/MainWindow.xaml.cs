@@ -44,8 +44,9 @@ namespace Button
             Storyboard driveSB = this.Resources["DriveInitialD"] as Storyboard;
             driveSB.Completed += driveSB_Completed;
 
-            Storyboard anticipate = this.Resources["Anticipation"] as Storyboard;
-            anticipate.Completed += anticipate_Completed;
+            Storyboard start = this.Resources["Start"] as Storyboard;
+            start.Completed += start_Completed;
+            start.Begin();
         }
 
         private void driveSB_Completed(object sender, EventArgs e)
@@ -53,25 +54,14 @@ namespace Button
             btnCarlos.Source = new BitmapImage(new Uri(@"/assets/Carlos button.png", UriKind.Relative));
             Storyboard driveSB = this.Resources["DriveInitialD"] as Storyboard;
             driveSB.Stop();
-            // btnCarlos.RenderTransform = new TranslateTransform();
         }
 
-        /*
-        private void EventPublisher_OnFinish(object sender, EventArgs args)
-        {
-            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate () { this.stopDriveSB(); });
-        }
 
-        private void stopDriveSB()
-        {
-            
-        }
-        */
 
-        private void anticipate_Completed(object sender, EventArgs e)
+        private void start_Completed(object sender, EventArgs e)
         {
-            Storyboard anticipate = this.Resources["Anticipation"] as Storyboard;
-            anticipate.Stop();
+            Storyboard start = this.Resources["Start"] as Storyboard;
+            start.Stop();
         }
 
         private void btnCarlos_MouseMove(object sender, MouseEventArgs e)
@@ -84,42 +74,38 @@ namespace Button
             }
 
             Point mousePos = e.GetPosition(this);
-
-
+        
             
             Debug.WriteLine("Mouse Moving!");
-            Storyboard anticipate = this.Resources["Anticipation"] as Storyboard;
-            if (!anticipating)
-            {
+
                 // check x, y coordinates to see if they match the x, y coordinates of the elements on the map
-                if (((mousePos.X >= 390) & (mousePos.X <= 390 + btnCarlos.Width)) & ((mousePos.Y >= 620) & (mousePos.Y <= 625 + btnCarlos.Height)))
-                {
-                    // Carlos is driving through Mount Haruna
-                    anticipate.Begin();
-                    anticipating = true;
-                    Debug.WriteLine("Vroom vroom");
-                }
-                else if (((mousePos.X >= 270) & (mousePos.X <= 270 + btnCarlos.Width)) & ((mousePos.Y >= 660) & (mousePos.Y <= 660 + btnCarlos.Height)))
-                {
-                    // Carlos eats curry
-                    anticipate.Begin();
-                    anticipating = true;
-                    Debug.WriteLine("Curry");
-                }
-                else if (((mousePos.X >= 495) & (mousePos.X <= 495 + btnCarlos.Width)) & ((mousePos.Y >= 485) & (mousePos.Y <= 485 + btnCarlos.Height)))
-                {
-                    // Carlos loves 7-Eleven
-                    anticipate.Begin();
-                    anticipating = true;
-                    Debug.WriteLine("7-11");
-                }
-                else if (((mousePos.X >= 180) & (mousePos.X <= 180 + btnCarlos.Width)) & ((mousePos.Y >= 490) & (mousePos.Y <= 490 + btnCarlos.Height)))
-                {
-                    // Carlo gets black sugar free coffee from the vending machine
-                    anticipate.Begin();
-                    anticipating = true;
-                    Debug.WriteLine("Vending machine");
-                }
+            if (((mousePos.X >= 390) & (mousePos.X <= 390 + btnCarlos.Width)) & ((mousePos.Y >= 620) & (mousePos.Y <= 625 + btnCarlos.Height)))
+            {
+                // Carlos is driving through Mount Haruna
+                btnCarlos.Source = new BitmapImage(new Uri(@"/assets/Carlos button activated.png", UriKind.Relative));
+                anticipating = true;
+                Debug.WriteLine("Vroom vroom");
+            }
+            else if (((mousePos.X >= 270) & (mousePos.X <= 270 + btnCarlos.Width)) & ((mousePos.Y >= 660) & (mousePos.Y <= 660 + btnCarlos.Height)))
+            {
+                // Carlos eats curry
+                btnCarlos.Source = new BitmapImage(new Uri(@"/assets/Carlos button activated.png", UriKind.Relative));
+                anticipating = true;
+                Debug.WriteLine("Curry");
+            }
+            else if (((mousePos.X >= 495) & (mousePos.X <= 495 + btnCarlos.Width)) & ((mousePos.Y >= 485) & (mousePos.Y <= 485 + btnCarlos.Height)))
+            {
+                // Carlos loves 7-Eleven
+                btnCarlos.Source = new BitmapImage(new Uri(@"/assets/Carlos button activated.png", UriKind.Relative));
+                anticipating = true;
+                Debug.WriteLine("7-11");
+            }
+            else if (((mousePos.X >= 180) & (mousePos.X <= 180 + btnCarlos.Width)) & ((mousePos.Y >= 490) & (mousePos.Y <= 490 + btnCarlos.Height)))
+            {
+                // Carlo gets black sugar free coffee from the vending machine
+                btnCarlos.Source = new BitmapImage(new Uri(@"/assets/Carlos button activated.png", UriKind.Relative));
+                anticipating = true;
+                Debug.WriteLine("Vending machine");
             }
             btnCarlos.Margin = new Thickness(
                 mousePos.X - (btnCarlos.Width / 2),
@@ -129,6 +115,10 @@ namespace Button
         private void btnCarlos_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             pressed = true;
+            if (anticipating)
+            {
+                anticipating = false;
+            }
             // Determine if Tokyo background is set
             if (tokyoBackground)
             {
